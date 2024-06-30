@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="zh-hans" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Homeassistant远程开关NAS | 欢迎来到基德的Blog</title><meta name="description" content="安装环境首先按照官方指南Install Home Assistant Supervised HA控制Linux开机与关机将HA的ssh key添加到nas众所周知ssh登录是要输入密码的，为了能让关机的ssh可以在没有交互的情况下完成，我们要将HA的ssh key添加到nas。注意不是将HA的宿主机的SSH key添加到nas。 1docker exec -it  $(docker ps -f n"><meta name="author" content="KIDand怪盗基德"><meta name="copyright" content="KIDand怪盗基德"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/img/avatar.jpeg"><link rel="canonical" href="http://weiyangbo.gitee.io/2021/11/28/Homeassistant-wol/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><meta property="og:type" content="article"><meta property="og:title" content="Homeassistant远程开关NAS"><meta property="og:url" content="http://weiyangbo.gitee.io/2021/11/28/Homeassistant-wol/"><meta property="og:site_name" content="欢迎来到基德的Blog"><meta property="og:description" content="安装环境首先按照官方指南Install Home Assistant Supervised HA控制Linux开机与关机将HA的ssh key添加到nas众所周知ssh登录是要输入密码的，为了能让关机的ssh可以在没有交互的情况下完成，我们要将HA的ssh key添加到nas。注意不是将HA的宿主机的SSH key添加到nas。 1docker exec -it  $(docker ps -f n"><meta property="og:image" content="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg"><meta property="article:published_time" content="2021-11-27T21:44:07.000Z"><meta property="article:modified_time" content="2024-01-24T04:19:06.625Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '5.2.0',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"We didn't find any results for the search: ${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  bookmark: {
+    message_prev: 'Press',
+    message_next: 'to bookmark this page'
+  },
+  runtime: '',
+  date_suffix: {"one_hour":"Just","hours":"hours ago","day":"days ago"},
+  copyright: undefined,
+  ClickShowText: undefined,
+  medium_zoom: false,
+  fancybox: true,
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  baiduPush: false,
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: true
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+    },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2024-01-24 12:19:06'
+}</script><noscript><style type="text/css">#nav{opacity:1}.justified-gallery img{opacity:1}</style></noscript><script>var activateDarkMode = function () {
+  document.documentElement.setAttribute('data-theme', 'dark')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+  }
+}
+var activateLightMode = function () {
+  document.documentElement.setAttribute('data-theme', 'light')
+  if (document.querySelector('meta[name="theme-color"]') !== null) {
+    document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+  }
+}
+
+var autoChangeMode = '1'
+var t = saveToLocal.get('theme')
+if (autoChangeMode === '1') {
+  var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+  var isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+  var isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+  var hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+  if (t === undefined) {
+    if (isLightMode) activateLightMode()
+    else if (isDarkMode) activateDarkMode()
+    else if (isNotSpecified || hasNoSupport) {
+      var now = new Date()
+      var hour = now.getHours()
+      var isNight = hour <= 6 || hour >= 18
+      isNight ? activateDarkMode() : activateLightMode()
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+      if (saveToLocal.get('theme') === undefined) {
+        e.matches ? activateDarkMode() : activateLightMode()
+      }
+    })
+  } else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else if (autoChangeMode === '2') {
+  now = new Date()
+  hour = now.getHours()
+  isNight = hour <= 6 || hour >= 18
+  if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+  else if (t === 'light') activateLightMode()
+  else activateDarkMode()
+} else {
+  if (t === 'dark') activateDarkMode()
+  else if (t === 'light') activateLightMode()
+}</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/img/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">Articles</div><div class="length_num">29</div></a></div></div><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/tags/"><div class="headline">Tags</div><div class="length_num">1</div></a></div></div></div><hr></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%8E%AF%E5%A2%83"><span class="toc-number">1.</span> <span class="toc-text">安装环境</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HA%E6%8E%A7%E5%88%B6Linux%E5%BC%80%E6%9C%BA%E4%B8%8E%E5%85%B3%E6%9C%BA"><span class="toc-number">2.</span> <span class="toc-text">HA控制Linux开机与关机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%86HA%E7%9A%84ssh-key%E6%B7%BB%E5%8A%A0%E5%88%B0nas"><span class="toc-number">2.1.</span> <span class="toc-text">将HA的ssh key添加到nas</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8HA%E4%B8%AD%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E5%90%8D%E4%B8%BAnas%E7%9A%84switch%E5%AE%9E%E4%BD%93"><span class="toc-number">2.2.</span> <span class="toc-text">在HA中添加一个名为nas的switch实体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8HA%E9%9D%A2%E6%9D%BF%E4%B8%AD%E6%B7%BB%E5%8A%A0nas"><span class="toc-number">2.3.</span> <span class="toc-text">在HA面板中添加nas</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HA%E6%8E%A7%E5%88%B6Windows%E5%BC%80%E6%9C%BA%E4%B8%8E%E5%85%B3%E6%9C%BA"><span class="toc-number">3.</span> <span class="toc-text">HA控制Windows开机与关机</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A9Windows%E6%94%AF%E6%8C%81%E8%BF%9C%E7%A8%8B%E5%85%B3%E6%9C%BA"><span class="toc-number">3.1.</span> <span class="toc-text">让Windows支持远程关机</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E7%9A%84RPC-Shutdown%E5%A4%A7%E6%B3%95%EF%BC%88HA%E6%94%AF%E6%8C%81Adds-on%E7%9A%84%E6%83%85%E5%86%B5%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">简单的RPC Shutdown大法（HA支持Adds-on的情况）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85RPC-Shutdown%E5%B9%B6%E9%85%8D%E7%BD%AE"><span class="toc-number">3.2.1.</span> <span class="toc-text">安装RPC Shutdown并配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8HA%E4%B8%AD%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E5%90%8D%E4%B8%BAPC%E7%9A%84switch%E5%AE%9E%E4%BD%93"><span class="toc-number">3.2.2.</span> <span class="toc-text">在HA中添加一个名为PC的switch实体</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%8D%E6%9D%82%E7%9A%84%E6%9B%B2%E7%BA%BF%E6%95%91%E5%9B%BD%EF%BC%88HA%E4%B8%8D%E6%94%AF%E6%8C%81Adds-on%E7%9A%84%E6%83%85%E5%86%B5%EF%BC%89"><span class="toc-number">3.3.</span> <span class="toc-text">复杂的曲线救国（HA不支持Adds-on的情况）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85php%E5%92%8Csamba-common-bin"><span class="toc-number">3.3.1.</span> <span class="toc-text">安装php和samba-common-bin</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8HA%E4%B8%AD%E6%B7%BB%E5%8A%A0%E4%B8%80%E4%B8%AA%E5%90%8D%E4%B8%BAPC%E7%9A%84switch%E5%AE%9E%E4%BD%93-1"><span class="toc-number">3.3.2.</span> <span class="toc-text">在HA中添加一个名为PC的switch实体</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8HA%E9%9D%A2%E6%9D%BF%E4%B8%AD%E6%B7%BB%E5%8A%A0nas-1"><span class="toc-number">3.4.</span> <span class="toc-text">在HA面板中添加nas</span></a></li></ol></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image:url(https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">欢迎来到基德的Blog</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i> <span>Search</span></a></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">Homeassistant远程开关NAS</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-11-27T21:44:07.000Z" title="Created 2021-11-28 05:44:07">2021-11-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-01-24T04:19:06.625Z" title="Updated 2024-01-24 12:19:06">2024-01-24</time></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word count:</span><span class="word-count">999</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading time:</span><span>4min</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><p>首先按照官方指南<a target="_blank" rel="noopener" href="https://www.home-assistant.io/installation/linux#install-home-assistant-supervised">Install Home Assistant Supervised</a></p><h1 id="HA控制Linux开机与关机"><a href="#HA控制Linux开机与关机" class="headerlink" title="HA控制Linux开机与关机"></a>HA控制Linux开机与关机</h1><h2 id="将HA的ssh-key添加到nas"><a href="#将HA的ssh-key添加到nas" class="headerlink" title="将HA的ssh key添加到nas"></a>将HA的ssh key添加到nas</h2><p>众所周知ssh登录是要输入密码的，为了能让关机的ssh可以在没有交互的情况下完成，我们要将HA的ssh key添加到nas。注意不是将HA的宿主机的SSH key添加到nas。</p><figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it  <span class="constructor">$(<span class="params">docker</span> <span class="params">ps</span> -<span class="params">f</span> <span class="params">name</span>=<span class="params">homeassistant</span> -<span class="params">q</span>)</span>  bash</span><br></pre></td></tr></table></figure><p>这样进入docker容器的shell，如果是第一次，下面开始生成ssh key</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -f <span class="regexp">/root/</span>.ssh/id_rsa</span><br></pre></td></tr></table></figure><p>然后一路回车，直到生成密钥，然后执行<code>ssh-id-copy</code>将密钥复制到nas</p><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-<span class="keyword">copy</span>-<span class="built_in">id</span> root@nas的ip地址</span><br></pre></td></tr></table></figure><p>接着按照提示输入nas的root密码，复制密钥完成，以后就可以免密登录nas了。<br>可以在docker容器的shell中直接测试<code>ssh root@nas的ip地址</code></p><h2 id="在HA中添加一个名为nas的switch实体"><a href="#在HA中添加一个名为nas的switch实体" class="headerlink" title="在HA中添加一个名为nas的switch实体"></a>在HA中添加一个名为nas的switch实体</h2><p>然后编辑HA的配置文件<code>/usr/share/hassio/homeassistant/configuration.yaml</code>，添加如下字段</p><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">switch</span>:</span><br><span class="line">    - <span class="attribute">platform</span>: wake_on_lan</span><br><span class="line">      <span class="attribute">mac</span>: <span class="string">&quot;nas的mac地址&quot;</span></span><br><span class="line">      <span class="attribute">name</span>: <span class="string">&quot;nas&quot;</span></span><br><span class="line">      <span class="attribute">host</span>: <span class="string">&quot;nas的ip地址&quot;</span></span><br><span class="line">      <span class="attribute">turn_off</span>:</span><br><span class="line">        <span class="attribute">service</span>: shell_command.turn_off_nas</span><br><span class="line"></span><br><span class="line"><span class="attribute">shell_command</span>:</span><br><span class="line">  <span class="attribute">turn_off_nas</span>: <span class="string">&quot;ssh -i /root/.ssh/id_rsa -o &#x27;StrictHostKeyChecking=no&#x27; root@nas的ip地址 poweroff&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="在HA面板中添加nas"><a href="#在HA面板中添加nas" class="headerlink" title="在HA面板中添加nas"></a>在HA面板中添加nas</h2><p>在HA的概览中编辑仪表盘，添加nas开关。然后看看能不能控制nas的开机和关机啦！</p><h1 id="HA控制Windows开机与关机"><a href="#HA控制Windows开机与关机" class="headerlink" title="HA控制Windows开机与关机"></a>HA控制Windows开机与关机</h1><h2 id="让Windows支持远程关机"><a href="#让Windows支持远程关机" class="headerlink" title="让Windows支持远程关机"></a>让Windows支持远程关机</h2><ul><li>关闭防火墙，禁用杀毒软件，排除相关干扰</li><li>必须要设置账户密码，因为要远程开机，所以最好还要设置自动登录（下面会说到）</li><li>开启RPC相关服务（下面会说到）</li></ul><p>首先管理员身份运行CMD，运行如下命令</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sc<span class="built_in"> config </span>RemoteRegistry start= auto</span><br><span class="line">sc start RemoteRegistry</span><br><span class="line">sc<span class="built_in"> config </span>RpcSs start= auto</span><br><span class="line">sc start RpcSs</span><br></pre></td></tr></table></figure><p>将下面的文字复制到文本文档，更改<code>DefaultUserName</code>和<code>DefaultPassword</code>更改为你的用户名和密码</p><figure class="highlight moonscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version <span class="number">5.00</span></span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System]</span><br><span class="line"><span class="string">&quot;LocalAccountTokenFilterPolicy&quot;</span>=<span class="name">dword</span>:<span class="number">00000001</span></span><br><span class="line"></span><br><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon]</span><br><span class="line"><span class="string">&quot;AutoAdminLogon&quot;</span>=<span class="string">&quot;1&quot;</span></span><br><span class="line"><span class="string">&quot;DefaultUserName&quot;</span>=<span class="string">&quot;My&quot;</span></span><br><span class="line"><span class="string">&quot;DefaultPassword&quot;</span>=<span class="string">&quot;weiyangbo&quot;</span></span><br></pre></td></tr></table></figure><p>最后将文本文档的后缀改为reg，合并入注册表</p><h2 id="简单的RPC-Shutdown大法（HA支持Adds-on的情况）"><a href="#简单的RPC-Shutdown大法（HA支持Adds-on的情况）" class="headerlink" title="简单的RPC Shutdown大法（HA支持Adds-on的情况）"></a>简单的RPC Shutdown大法（HA支持Adds-on的情况）</h2><h3 id="安装RPC-Shutdown并配置"><a href="#安装RPC-Shutdown并配置" class="headerlink" title="安装RPC Shutdown并配置"></a>安装RPC Shutdown并配置</h3><p>这步很简单，直接在Add-ons商店里面搜索<code>RPC Shutdown</code>并安装就可以了。不过前提是你的HA要支持Add-ons，至少要Supervisor方式安装才有可能支持安装Add-ons。<br>进入RPC Shutdown的“配置”选项卡，更改<code>address</code>为你的Windows电脑的IP地址（肯定要是固定的），更改<code>credentials</code>为<code>Windows用户名%Windows密码</code>（其中%是不可省略的分隔符），更改<code>alias</code>为自己好记的名字。</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">computers:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">address:</span> <span class="number">192.168</span><span class="number">.0</span><span class="number">.12</span></span><br><span class="line">    <span class="attr">alias:</span> <span class="string">my-pc</span></span><br><span class="line">    <span class="attr">credentials:</span> <span class="string">My%weiyangbo</span></span><br><span class="line">    <span class="attr">delay:</span> <span class="number">0</span></span><br><span class="line">    <span class="attr">message:</span> <span class="string">&gt;-</span></span><br><span class="line">      <span class="string">Home</span> <span class="string">Assistant</span> <span class="string">is</span> <span class="string">shutting</span> <span class="string">down</span> <span class="string">this</span> <span class="string">PC.</span> <span class="string">This</span> <span class="string">cannot</span> <span class="string">be</span> <span class="string">canceled.</span> <span class="string">Please</span></span><br><span class="line">      <span class="string">save</span> <span class="string">your</span> <span class="string">work!</span></span><br><span class="line"></span><br></pre></td></tr></table></figure><p>保存并重启RPC Shutdown</p><h3 id="在HA中添加一个名为PC的switch实体"><a href="#在HA中添加一个名为PC的switch实体" class="headerlink" title="在HA中添加一个名为PC的switch实体"></a>在HA中添加一个名为PC的switch实体</h3><p>然后编辑HA的配置文件<code>/usr/share/hassio/homeassistant/configuration.yaml</code>，在<code>switch</code>字段下添加如下字段</p><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">switch</span>:</span><br><span class="line">    - <span class="attribute">platform</span>: wake_on_lan</span><br><span class="line">      <span class="attribute">mac</span>: <span class="string">&quot;1c-1b-0d-18-63-0c&quot;</span></span><br><span class="line">      <span class="attribute">name</span>: <span class="string">&quot;PC&quot;</span></span><br><span class="line">      <span class="attribute">host</span>: <span class="string">&quot;192.168.0.12&quot;</span></span><br><span class="line">      <span class="attribute">turn_off</span>:</span><br><span class="line">        <span class="attribute">service</span>: hassio.addon_stdin</span><br><span class="line">        <span class="attribute">data</span>:</span><br><span class="line">            <span class="attribute">addon</span>: core_rpc_shutdown</span><br><span class="line">            <span class="attribute">input</span>: my-pc</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="复杂的曲线救国（HA不支持Adds-on的情况）"><a href="#复杂的曲线救国（HA不支持Adds-on的情况）" class="headerlink" title="复杂的曲线救国（HA不支持Adds-on的情况）"></a>复杂的曲线救国（HA不支持Adds-on的情况）</h2><h3 id="安装php和samba-common-bin"><a href="#安装php和samba-common-bin" class="headerlink" title="安装php和samba-common-bin"></a>安装php和samba-common-bin</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt <span class="keyword">install</span> php samba-common-<span class="keyword">bin</span></span><br></pre></td></tr></table></figure><p>新建php文件接受GET请求来执行对应的指令</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; remote_excute.php &lt;&lt; <span class="string">&#x27;EOF&#x27;</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($_GET[<span class="string">&#x27;shutdown_pc&#x27;</span>])) &#123;</span><br><span class="line">  $output = shell_exec(<span class="string">&#x27;net rpc -S 192.168.0.12 -U My%weiyangbo shutdown -t 1 -f&#x27;</span>);</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;&lt;pre&gt;<span class="subst">$output</span>&lt;/pre&gt;&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure><p>php开机自启动，添加以下内容到<code>/etc/rc.local</code></p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup php -S <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">80</span> /root/remote_excute.php &amp;</span><br></pre></td></tr></table></figure><h3 id="在HA中添加一个名为PC的switch实体-1"><a href="#在HA中添加一个名为PC的switch实体-1" class="headerlink" title="在HA中添加一个名为PC的switch实体"></a>在HA中添加一个名为PC的switch实体</h3><p>然后编辑HA的配置文件<code>/usr/share/hassio/homeassistant/configuration.yaml</code>，在<code>switch</code>字段下添加如下字段</p><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">switch</span>:</span><br><span class="line">    - <span class="attribute">platform</span>: wake_on_lan</span><br><span class="line">      <span class="attribute">mac</span>: <span class="string">&quot;4c-cc-6a-6b-0a-15&quot;</span></span><br><span class="line">      <span class="attribute">name</span>: <span class="string">&quot;PC&quot;</span></span><br><span class="line">      <span class="attribute">host</span>: <span class="string">&quot;192.168.0.12&quot;</span></span><br><span class="line">      <span class="attribute">turn_off</span>:</span><br><span class="line">        <span class="attribute">service</span>: shell_command.turn_off_pc</span><br><span class="line"></span><br><span class="line"><span class="attribute">shell_command</span>:</span><br><span class="line">  <span class="attribute">turn_off_pc</span>: <span class="string">&quot;curl http://127.0.0.1:80/?shutdown_pc&quot;</span></span><br></pre></td></tr></table></figure><h2 id="在HA面板中添加nas-1"><a href="#在HA面板中添加nas-1" class="headerlink" title="在HA面板中添加nas"></a>在HA面板中添加nas</h2><p>在HA的概览中编辑仪表盘，添加PC开关。然后看看能不能控制Windows PC的开机和关机啦！</p></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/12/03/Xray-trojan/"><img class="prev-cover" data-lazy-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">Xray+Nginx实现Trojan+TLS伪装代理</div></div></a></div><div class="next-post pull-right"><a href="/2021/11/25/Jellyfin-support-Chineese/"><img class="next-cover" data-lazy-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Jellyfin解决ass中文汉字变方块</div></div></a></div></nav></article></main><footer id="footer" data-type="color"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By KIDand怪盗基德</div><div class="framework-info"><span>Framework</span> <a href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme</span> <a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">Local search</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="Search for Posts" type="text"></div></div></div><hr><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>Powered by</span> <a href="https://github.com/wzpan/hexo-generator-search" style="color:#49b1f5">hexo-generator-search</a></div></div></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer="defer"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var endLoading = function () {
+  document.body.style.overflow = 'auto';
+  document.getElementById('loading-box').classList.add("loaded")
+}
+window.addEventListener('load',endLoading)</script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zindex="-1" count="99" mobile="false" src="/js/third-party/canvas-nest.js"></script><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = [
+  'title',
+  'meta[name=description]',
+  '#config_change',
+  '#body-wrap',
+  '#rightside-config-hide',
+  '#rightside-config-show',
+  '.js-pjax'
+]
+
+if (false) {
+  pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]')
+}
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  $('script[data-pjax]').each(function () {
+    $(this).parent().append($(this).remove())
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  if (typeof gtag === 'function') {
+    gtag('config', '', {'page_path': window.location.pathname});
+  }
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // Analytics
+  if (false) {
+    MtaH5.pgv()
+  }
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+
+document.addEventListener('pjax:send', function () {
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  $(window).off('scroll')
+
+  //reset readmode
+  $('body').hasClass('read-mode') && $('body').removeClass('read-mode')
+
+})</script></div></body></html>
