@@ -1,0 +1,291 @@
+<!DOCTYPE html><html lang="zh-hans" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>欢迎来到基德的Blog</title><meta name="author" content="KIDand怪盗基德"><meta name="copyright" content="KIDand怪盗基德"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta property="og:type" content="website"><meta property="og:title" content="欢迎来到基德的Blog"><meta property="og:url" content="http://467815891a.github.io/page/2/index.html"><meta property="og:site_name" content="欢迎来到基德的Blog"><meta property="og:locale"><meta property="og:image" content="http://467815891a.github.io/img/avatar.jpg"><meta property="article:author" content="KIDand怪盗基德"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="http://467815891a.github.io/img/avatar.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="http://467815891a.github.io/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="manifest" href="/null"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":2,"unescape":true,"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '欢迎来到基德的Blog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (true) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" alt="Logo"><span class="site-name">欢迎来到基德的Blog</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i> <span>Search</span></span></div></div></nav><div id="site-info"><h1 id="site-title">欢迎来到基德的Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/03/23/armbian-ap/" title="Armbian下配置成无线接入点"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Armbian下配置成无线接入点"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/23/armbian-ap/" title="Armbian下配置成无线接入点">Armbian下配置成无线接入点</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-03-22T23:40:38.000Z" title="Created 2022-03-23 07:40:38">2022-03-23</time></span></div><div class="content">捡了一个S912盒子，想要作为一个无线AP接入点。 前期准备首先要解除NetworkManager对wlan0的占用，先nmcli -s记下wlan0的mac地址，比如ff:ff:ff:ff:ff:ff，编辑/etc/NetworkManager/NetworkManager.conf，改一下下面的字段，把你的wlan0划为unmanageable-devices 12[keyfile]unmanaged-devices=mac:ff:ff:ff:ff:ff:ff 最后重启NetworkManager生效 1sudo service NetworkManager restart 配置WiFi然后我们安装hostapd、bridge-utils 1sudo apt-get install hostapd bridge-utils -y hostapd负责发射WiFi，先编辑他的配置文件/etc/default/hostapd，去掉下面这行注释并修改 1DAEMON_CONF=&quot;/etc/hostapd/hostapd.conf&quot; 再编辑他的配置文件/etc/ho...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/03/23/armbian-router/" title="Armbian下配置成无线路由器"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Armbian下配置成无线路由器"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/23/armbian-router/" title="Armbian下配置成无线路由器">Armbian下配置成无线路由器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-03-22T23:40:38.000Z" title="Created 2022-03-23 07:40:38">2022-03-23</time></span></div><div class="content">捡了一个S912盒子，想要作为一个无线网关，用作智能家居的网关。有线网口接路由器，通过无线网卡发射WiFi等待其他物联网设备连接。其实说白了就是无线路由器。 前期准备首先我们改一下systemd-resolved，解除53端口占用。 123echo &quot;DNS=114.114.114.114&quot;&gt;&gt;/etc/systemd/resolved.confecho &quot;DNSStubListener=no&quot;&gt;&gt;/etc/systemd/resolved.confsudo systemctl restart systemd-resolved 然后要解除NetworkManager对wlan0的占用，先nmcli -s记下wlan0的mac地址，比如ff:ff:ff:ff:ff:ff，编辑/etc/NetworkManager/NetworkManager.conf，改一下下面的字段，把你的wlan0划为unmanageable-devices 12[keyfile]unmanaged-devices=mac:ff:ff:ff:ff...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/03/10/Jellyfin-HWAcceleration/" title="Jellyfin-HWAcceleration"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Jellyfin-HWAcceleration"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/10/Jellyfin-HWAcceleration/" title="Jellyfin-HWAcceleration">Jellyfin-HWAcceleration</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-03-09T23:05:59.000Z" title="Created 2022-03-10 07:05:59">2022-03-10</time></span></div><div class="content">Debian上直接安装Jellyfin，成功开启QSV硬解某次apt upgrade 后，Jellyfin在网页播放视频时报错，提示“视频与客户端不兼容”之类的字样。关闭硬件解码就可以播放，但是不论打开QSV硬解还是VAAPI硬解都报错。 问题描述jellyfin.log（片段） 123456[2022-03-10 06:54:50.378 -05:00] [INF] Current HLS implementation doesn&#x27;t support non-keyframe breaks but one is requested, ignoring that request[2022-03-10 06:54:50.379 -05:00] [INF] /usr/lib/jellyfin-ffmpeg/ffmpeg -c:v h264_qsv -hwaccel qsv -i file:&quot;/home/wei/downloads/porn/VID_20220128_081427_101.mp4&quot; -map_metadata -1 -map_chapter...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/03/08/wled-HA/" title="用WLED控制流光灯带并接入Home Assistant"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用WLED控制流光灯带并接入Home Assistant"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/08/wled-HA/" title="用WLED控制流光灯带并接入Home Assistant">用WLED控制流光灯带并接入Home Assistant</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-03-07T23:45:17.000Z" title="Created 2022-03-08 07:45:17">2022-03-08</time></span></div><div class="content">引言bad asset path... 视频中的LED灯条，是由许多5050型RGB灯组成，其中每个RGB灯集成了红色、绿色、蓝色的三色LED灯和非常紧凑的WS2812B LED驱动器IC。根据三个红色、绿色和蓝色LED的强度，我们可以模拟出我们想要的任何颜色和亮度。 把许多RGB的连在一起并单独控制，就可以形成动态的灯带。WLED固件既可以方便无门槛刷入ESP系列芯片、接入Home Assistant控制，而且各种自定义设置直接拉满，你想怎么自定义都行。 硬件准备 ESP8266/ESP32开发板（推荐FLASH大于1MB的ESP开发板，否则不支持OTA升级） WS2812B灯带 足功率的5V电源（具体咨询卖灯带的客服） 电脑一台和USB数据线(用于为ESP8266刷写固件) 刷写固件如果你的ESP8266/ESP32的FLASH大小是4MB的，官方推荐WLED web installer网页方式刷入固件。否则的话需要手动下载最新的WLED固件和ESP Home Flasher，用ESP Home Flasher将最新固件刷入你的ESP开发板。刷机过程略过，大家自行百度。只要...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/03/06/Voice-control-node/" title="利用SU-03T和ESP32自制语音控制节点"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="利用SU-03T和ESP32自制语音控制节点"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/06/Voice-control-node/" title="利用SU-03T和ESP32自制语音控制节点">利用SU-03T和ESP32自制语音控制节点</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-03-05T22:49:47.000Z" title="Created 2022-03-06 06:49:47">2022-03-06</time></span></div><div class="content">传统智能音箱的缺点： 成本高，严重依赖各家生态，各家生态互不兼容，用户一旦入坑就只能一条路走到黑。 执行一条语音命令需要先语音唤醒，效率低，影响使用心情。 智能音箱一直联网监听，隐私风险大。 下面先来看看我制作的语音控制节点，不管是识别率，识别速度，识别距离都是令人满意的，而且不光可以控制接入Home Assistant的智能家电，还可以控制各种红外遥控的传统家电。 .aspect-ratio { position: relative; width: 100%; height: 0; padding-bottom: 75%; } .aspect-ratio iframe { position: absolute; width: 100%; height: 100%; left: 0; top: 0; } 之所以叫做“语音控制节点”是因为目前这个手工焊接的版本实在是太过简陋，实在不像是一个“音箱”。另一方面这一个板子上不光有语音控制功能，还可以添加各种传感器，未来可以将自身数据与其他不同位置的设备共享，是我智能家居这个大工程当中的一个“节点”。 硬件成本 硬件...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/03/06/ESPHome-ble-tracker/" title="利用ESPHome进行蓝牙设备定位"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="利用ESPHome进行蓝牙设备定位"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/06/ESPHome-ble-tracker/" title="利用ESPHome进行蓝牙设备定位">利用ESPHome进行蓝牙设备定位</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-03-05T20:35:47.000Z" title="Created 2022-03-06 04:35:47">2022-03-06</time></span></div><div class="content">最近捣鼓智能家居，用ESP32进行蓝牙设备定位，追踪小米手环手环，根据信号强度判断人是否在房间或者家里。 硬件与软件准备工作 硬件 软件 ESP32 ESPHome v2022.2.1 NAS/软路由 Homeassistant 2021.11.4 小米手环 首先要在“小米穿戴”APP中打开小米手环的“蓝牙广播”功能，重启小米手环并确定“蓝牙广播”处于开启状态。进入小米手环的设置，记录下小米手环的蓝牙地址，例如我的小米手环蓝牙地址FA:4C:19:74:CF:20 编译并上传固件详细参见ESPHome的ESP32 Bluetooth Low Energy Tracker Hub章节，下面粘贴我的ESPHome的编译配置yaml。 12345678910111213141516171819202122232425262728293031323334353637esphome: name: esp32esp32: board: esp32dev framework: type: esp-idf version: latest # Cus...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/03/06/ESPHome-IRomte/" title="利用ESPHome自制万能遥控器"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="利用ESPHome自制万能遥控器"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/03/06/ESPHome-IRomte/" title="利用ESPHome自制万能遥控器">利用ESPHome自制万能遥控器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-03-05T17:18:52.000Z" title="Created 2022-03-06 01:18:52">2022-03-06</time></span></div><div class="content">最近捣鼓智能家居，用ESP32/ESP8266控制家里传统红外遥控的空调。其他红外的机顶盒、电视盒子也同理。 硬件与软件准备工作 硬件 软件 ESP32 ESPHome v2022.2.1 NAS/软路由 Homeassistant 2021.11.4 5mm红外发射头（940nm) 红外接收头(型号随意) 红外发射和接受按照上面电路连接，红外发射头由ESP32的GPIO27控制，红外接收头由GPIO14输入。 红外接收与遥控器学习详细参见ESPHome的Remote Receiver章节，下面粘贴我的ESPHome的编译配置yaml。 12345678910111213141516171819202122232425262728293031323334353637esphome: name: esp32esp32: board: esp32dev framework: type: esp-idf version: latest # Custom sdkconfig options sdkconfig_options: ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/12/03/Xray-trojan/" title="Xray+Nginx实现Trojan+TLS伪装代理"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Xray+Nginx实现Trojan+TLS伪装代理"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/12/03/Xray-trojan/" title="Xray+Nginx实现Trojan+TLS伪装代理">Xray+Nginx实现Trojan+TLS伪装代理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-12-02T22:45:40.000Z" title="Created 2021-12-03 06:45:40">2021-12-03</time></span></div><div class="content">记录一下Xray用Trojan协议（兼容Trojan）+ Nginx伪装代理 安装Xray和Nginx参考以下两个链接分别在服务器上安装Xray和Nginx。 编译安装和配置Nginx Xray官方Linux下安装指南 Nginx配置 编辑/etc/nginx/nginx.conf, https的域名以weiyangbo.com为例 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273user root;worker_processes 1;pid /var/run/nginx.pid;error_log /var/log/nginx_error.log;events &#123; use epoll; worker_connections 1024; multi_accept on;&#125;http &#123; include ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/11/28/Homeassistant-wol/" title="Homeassistant远程开关NAS"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Homeassistant远程开关NAS"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/11/28/Homeassistant-wol/" title="Homeassistant远程开关NAS">Homeassistant远程开关NAS</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-11-27T21:44:07.000Z" title="Created 2021-11-28 05:44:07">2021-11-28</time></span></div><div class="content">安装环境首先按照官方指南Install Home Assistant Supervised HA控制Linux开机与关机将HA的ssh key添加到nas众所周知ssh登录是要输入密码的，为了能让关机的ssh可以在没有交互的情况下完成，我们要将HA的ssh key添加到nas。注意不是将HA的宿主机的SSH key添加到nas。 1docker exec -it $(docker ps -f name=homeassistant -q) bash 这样进入docker容器的shell，如果是第一次，下面开始生成ssh key 1ssh-keygen -t rsa -f /root/.ssh/id_rsa 然后一路回车，直到生成密钥，然后执行ssh-id-copy将密钥复制到nas 1ssh-copy-id root@nas的ip地址 接着按照提示输入nas的root密码，复制密钥完成，以后就可以免密登录nas了。可以在docker容器的shell中直接测试ssh root@nas的ip地址 在HA中添加一个名为nas的switch实体然后编辑HA的配置文件/usr/share...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/11/25/Jellyfin-support-Chineese/" title="Jellyfin解决ass中文汉字变方块"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Jellyfin解决ass中文汉字变方块"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/11/25/Jellyfin-support-Chineese/" title="Jellyfin解决ass中文汉字变方块">Jellyfin解决ass中文汉字变方块</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2021-11-24T22:52:37.000Z" title="Created 2021-11-25 06:52:37">2021-11-25</time></span></div><div class="content">有两种情形：Jellyfin直接在软件源中安装，或者docker安装的 Jellyfin在字幕设置中可以选择烧录字幕，开启之后一旦发现字幕会强制转码视频并烧录字幕，实测在我的rk3399开发板上是软件编码，消耗太大。不到万不得已不要开启，但是万一真的碰到烧录的中文汉字变成方块的情况，清继续往下看。 情形一：软件源安装Jellyfin详见Jellyfin官方安装指导 下载字体文件首先下载方正准圆的 woff2 版本 1mkdir /var/lib/jellyfin/data/fonts 然后将字体文件解压并复制进上面的文件夹 Jellyfin设置备用字体进入Jellyfin的控制台-&gt;备用字体文件路径，填写/var/lib/jellyfin/data/fonts。然后勾选“启用备用字体” 情形二：Docker安装Jellyfin（安装前）参考Jellyfin官方安装指导提供我的docker-compose.yaml 12345678910111213141516version: &#x27;3.5&#x27;services: jellyfin: image: je...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info-name">KIDand怪盗基德</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" href="https://github.com/467815891a"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/08/21/frp-nginx-proxy/" title="利用Frp+Nginx将http转化为https"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="利用Frp+Nginx将http转化为https"></a><div class="content"><a class="title" href="/2025/08/21/frp-nginx-proxy/" title="利用Frp+Nginx将http转化为https">利用Frp+Nginx将http转化为https</a><time datetime="2025-08-21T11:39:50.000Z" title="Created 2025-08-21 19:39:50">2025-08-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/13/xray-reality/" title="Xray配置Vless-Reality-Vision"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Xray配置Vless-Reality-Vision"></a><div class="content"><a class="title" href="/2025/08/13/xray-reality/" title="Xray配置Vless-Reality-Vision">Xray配置Vless-Reality-Vision</a><time datetime="2025-08-13T12:25:00.000Z" title="Created 2025-08-13 20:25:00">2025-08-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/13/openwrt-ipv6/" title="记录一下Openwrt的ipv6相关设置"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="记录一下Openwrt的ipv6相关设置"></a><div class="content"><a class="title" href="/2024/03/13/openwrt-ipv6/" title="记录一下Openwrt的ipv6相关设置">记录一下Openwrt的ipv6相关设置</a><time datetime="2024-03-13T10:40:56.000Z" title="Created 2024-03-13 18:40:56">2024-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/01/docker-clean/" title="定位Docker占用过多磁盘空间的问题"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="定位Docker占用过多磁盘空间的问题"></a><div class="content"><a class="title" href="/2024/02/01/docker-clean/" title="定位Docker占用过多磁盘空间的问题">定位Docker占用过多磁盘空间的问题</a><time datetime="2024-02-01T15:48:31.000Z" title="Created 2024-02-01 23:48:31">2024-02-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/01/dt741-bridge/" title="移动dt741-csf改桥接"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="移动dt741-csf改桥接"></a><div class="content"><a class="title" href="/2024/02/01/dt741-bridge/" title="移动dt741-csf改桥接">移动dt741-csf改桥接</a><time datetime="2024-02-01T08:22:06.000Z" title="Created 2024-02-01 16:22:06">2024-02-01</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/Android/" style="font-size:1.1em;color:#999">Android</a> <a href="/tags/Nginx/" style="font-size:1.5em;color:#99a9bf">Nginx</a> <a href="/tags/%E6%A2%AF%E5%AD%90/" style="font-size:1.3em;color:#99a1ac">梯子</a> <a href="/tags/ESP%E8%8A%AF%E7%89%87/" style="font-size:1.3em;color:#99a1ac">ESP芯片</a> <a href="/tags/openwrt/" style="font-size:1.2em;color:#999da3">openwrt</a> <a href="/tags/HomeAssistant/" style="font-size:1.4em;color:#99a5b6">HomeAssistant</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i> <span>Archives</span><a class="card-more-btn" href="/archives/" title="View More"><i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"> <a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">August 2025</span> <span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"> <a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">March 2024</span> <span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"> <a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">February 2024</span> <span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"> <a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">January 2024</span> <span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"> <a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">July 2023</span> <span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"> <a class="card-archive-list-link" href="/archives/2022/03/"><span class="card-archive-list-date">March 2022</span> <span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"> <a class="card-archive-list-link" href="/archives/2021/12/"><span class="card-archive-list-date">December 2021</span> <span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"> <a class="card-archive-list-link" href="/archives/2021/11/"><span class="card-archive-list-date">November 2021</span> <span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">31</div></div><div class="webinfo-item"><div class="item-name">Total Word Count :</div><div class="item-count">30.2k</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastpushdate="2025-08-24T14:07:10.130Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By KIDand怪盗基德</span><span class="framework-info"><span>Framework</span> <a href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme</span> <a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = [].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  fetch('https://v.api.aa1.cn/api/yiyan/index.php')
+    .then(response => response.text())
+    .then(data => {
+      const reg = /<p>(.*?)<\/p>/g
+      const result = reg.exec(data)
+      if (result && result[1]) {
+        typedJSFn.processSubtitle(result[1])
+      } else {
+        throw new Error('Failed to parse the return value of the Yiyan API')
+      }
+    })
+    .catch(err => {
+      console.error('Failed to get the Yiyan API:', err)
+      typedJSFn.processSubtitle(0)
+    })
+}
+typedJSFn.run(subtitleType)
+</script></div><script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zindex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      false
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i> <span>Loading Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="键入你想搜索的关键词" type="text"></div></div><hr><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html><html lang="zh-hans" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>欢迎来到基德的Blog</title><meta name="author" content="KIDand怪盗基德"><meta name="copyright" content="KIDand怪盗基德"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta property="og:type" content="website"><meta property="og:title" content="欢迎来到基德的Blog"><meta property="og:url" content="http://467815891a.github.io/page/3/index.html"><meta property="og:site_name" content="欢迎来到基德的Blog"><meta property="og:locale"><meta property="og:image" content="http://467815891a.github.io/img/avatar.jpg"><meta property="article:author" content="KIDand怪盗基德"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="http://467815891a.github.io/img/avatar.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/avatar.jpg"><link rel="canonical" href="http://467815891a.github.io/page/3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="manifest" href="/null"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":2,"unescape":true,"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '欢迎来到基德的Blog',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      if ($loadingBox.classList.contains('loaded')) return
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+
+  if (document.readyState === 'complete') {
+    preloader.endLoading()
+  } else {
+    window.addEventListener('load', preloader.endLoading)
+    document.addEventListener('DOMContentLoaded', preloader.endLoading)
+    // Add timeout protection: force end after 7 seconds
+    setTimeout(preloader.endLoading, 7000)
+  }
+
+  if (true) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" alt="Logo"><span class="site-name">欢迎来到基德的Blog</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i> <span>Search</span></span></div></div></nav><div id="site-info"><h1 id="site-title">欢迎来到基德的Blog</h1><div id="site-subtitle"><span id="subtitle"></span></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover left"><a href="/2020/03/25/B760HV2/" title="中兴B760HV2电视盒子完美刷机"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="中兴B760HV2电视盒子完美刷机"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/03/25/B760HV2/" title="中兴B760HV2电视盒子完美刷机">中兴B760HV2电视盒子完美刷机</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-03-25T01:54:25.000Z" title="Created 2020-03-25 09:54:25">2020-03-25</time></span></div><div class="content">丈母娘想看电视，我就寻思着现在有线电视不划来，网络都这么发达了，找点直播源也很简单。但是给长辈用最重要的还是简单易用最重要。先说成果，通电后自动播放直播电视，整个过程大概25秒。通过利用手头安徽移动送的这个中兴B760HV2智能机顶盒，安装AlexELEC系统来实现播放电视直播源，记录一下这个曲折的过程。 丈母娘家有一个移动办宽带送的电视盒子——中兴 ZXV10 B760HV2智能机顶盒（WiFi版），我想大多数电视盒子都是晶晨的主控，刷机应该不难。但是翻遍了全网，没找到这个机子的刷机教程，只找到了救砖线刷包，也算是给我吃了一颗定心丸，不怕死了，综合其他机子的刷机教程就是干。首先要确定硬件配置，找到硬件相似的机型的刷机教程或者刷机包。拆开机子一看，Realtek RTL8818ETV + 1G RAM 的组合不出我意料，但4G NAND + Amlogic S805的Soc就让我有些傻眼了，这配置简直丐中丐。CoreELEC已经放弃了S80x系列的Soc了。本来CoreELEC刷机包都下载好了，现在要重新查资料了。最终找到了支持S805的Kodi系统AlexELEC，看样子应该...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2020/03/21/SSH-reverse-tunnel-Openwrt/" title="OpenWrt上使用AutoSSH建立反向代理"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OpenWrt上使用AutoSSH建立反向代理"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/03/21/SSH-reverse-tunnel-Openwrt/" title="OpenWrt上使用AutoSSH建立反向代理">OpenWrt上使用AutoSSH建立反向代理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-03-21T06:47:41.000Z" title="Created 2020-03-21 14:47:41">2020-03-21</time></span></div><div class="content">丈母娘想让我解决她们家Wifi信号弱的问题，我决定把家里原来唯一的无线路由器变成纯AP，弱电箱里放一个星际宝盒，另外在客厅放一台K2保证全家的Wifi覆盖。本来路由器这种东西设置好了就不会再动了，可是我还需要解决他们家网络电视的问题，网络电视这种东西，直播源很容易失效，感觉以后会涉及到远程维护了。我之前写过Ubuntu下用Autossh建立反向连接的博文，现在想照搬到OpenWrt上。但是OpenWrt上是用Dropbear作为SSH工具，与OpenSSH有些许不同，记录一下过程。 前期准备 公网服务器A 开放端口5680(转发ssh连接)，开放端口5681(监听连接状态)，开放端口22，用OpenSSH做SSH服务器 内网机器B OpenWrt with Dropbear 修改公网服务器A的SSH配置文件/etc/ssh/sshd_config123456GatewayPorts yesHostKeyAlgorithms +ssh-rsaPubkeyAcceptedAlgorithms +ssh-rsaPubkeyAuthentication yesAuthorizedKe...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2020/03/12/OrangePi-Setup/" title="OrangePi第一次配置"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OrangePi第一次配置"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/03/12/OrangePi-Setup/" title="OrangePi第一次配置">OrangePi第一次配置</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-03-12T13:24:46.000Z" title="Created 2020-03-12 21:24:46">2020-03-12</time></span></div><div class="content">入手了OrangePi Zero玩玩，已经把他做成了智能音箱了，结果不知道怎么回事就突然出问题了。之前一直都是通过WiFi连接SSH服务器来控制OrangePi Zero，现在的情况是WiFi刚连上就死机了。OrangePi Zero已经用胶粘在音箱里了，TF卡可以取出来，但是网口没有空间插网线了。突然想起来手上还有一个CH340（USB转TTL）可以用来连接OrangePi Zero，记录一下不用网线配置OrangePi。 烧入Armbian官方的Linux镜像已经完全不更新了。还是Armbian好，一直在不断更新，内核也到了5.4下载OrangePi Zero的镜像，需要注意的是，我强烈推荐Ubuntu版的Armbian，Debian版反应迟缓、经常死机，具体原因不清楚。然后解压，校验镜像7z e Armbian_*.7z &amp;&amp; sha256sum --check Armbian_*.img.sha接着将SD卡插入电脑，查看SD的分区，如sdXlsblk -p依次卸载SD卡的所有分区sudo umount /dev/sdX*等等烧录镜像sudo dd bs=...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2020/02/28/Trojan/" title="Trojan+Nginx实现HTTP+TLS伪装代理"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Trojan+Nginx实现HTTP+TLS伪装代理"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/02/28/Trojan/" title="Trojan+Nginx实现HTTP+TLS伪装代理">Trojan+Nginx实现HTTP+TLS伪装代理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2020-02-28T06:52:33.000Z" title="Created 2020-02-28 14:52:33">2020-02-28</time></span></div><div class="content">我之前写过V2ray+Nginx实现WebSocket+TLS伪装代理的博文，用了几个月，效果不错的。本来不准备更换方案，但是我发现MT7621主控的路由器跑V2ray最高就8Mbps左右的速度，电脑上可以跑到30Mbps。很明显路由器成为了瓶颈。相对于Golang写的V2ray，用C写的Trojan明显应该可以消耗更少的资源，于是有了更换Trojan的想法。 安装Trojan和Nginx参考以下两个链接分别安装Nginx和Trojan，其中Trojan是在客户端和在服务器上都要安装的，跟SS不同，Trojan服务端和客户端是一体的。Nginx只需服务器安装就可以了。 Trojan官方Linux下安装指南我之前写过编译安装和配置Nginx的博文 服务端设置网上所有的方案就是让Trojan监听443端口，然后将识别出的正常网页流量转发到Nginx，这样无疑会降低访问正常网页的速度。但是想想我的网站也没多少访问量，而且这样应该会提升科学上网的速度，符合我的初衷，于是就开干了。Nginx配置 1234567891011121314151617181920212223242526272...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2019/12/08/V2ray/" title="V2ray+Nginx实现WebSocket+TLS伪装代理"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="V2ray+Nginx实现WebSocket+TLS伪装代理"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/12/08/V2ray/" title="V2ray+Nginx实现WebSocket+TLS伪装代理">V2ray+Nginx实现WebSocket+TLS伪装代理</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2019-12-08T15:42:56.000Z" title="Created 2019-12-08 23:42:56">2019-12-08</time></span></div><div class="content">相比于SS，V2ray设置太麻烦了，对于移动端来说太耗电，对于硬路由来说性能开销太大。但是现在要干扰SS实在太简单，所以不得不未雨绸缪了。花了很大的功夫才利用V2ray+Nginx配置好WebSocket+TLS，同时不影响原来的网站。将V2ray藏在Nginx后面，使用 TLS 加密流量，看起来更像HTTPS。 安装V2ray和Nginx参考以下两个链接分别安装Nginx和V2ray，其中V2ray是在客户端和服务器上都要安装的，跟SS不同，V2ray不分服务端和客户端。Nginx只需服务器安装就可以了。 V2ray官方Linux下安装指南我之前写过编译安装和配置Nginx的博文 服务端设置官方的教程说得已经很清楚了，Nginx的配置和V2ray的配置都提到了，可以先做个参考 V2ray官方白话文配置教程服务器上的配置我跟官方差不多，直接贴出配置。Nginx配置 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2019/11/14/MTU-reset/" title="在Ubuntu 18.04上设置MTU"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在Ubuntu 18.04上设置MTU"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/11/14/MTU-reset/" title="在Ubuntu 18.04上设置MTU">在Ubuntu 18.04上设置MTU</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2019-11-13T23:35:40.000Z" title="Created 2019-11-14 07:35:40">2019-11-14</time></span></div><div class="content">用SSH连接服务器经常无缘无故断掉，SSH/SS连接表现出非常不稳定。但是用别的方法测试（ping或者访问服务器网页）速度都非常快，也没有丢包。一番搜索，发现是MTU值为1500设置太高了，表现为SSH客户端在认证时会卡在debug1: SSH2_MSG_KEXINIT sent下面分别给出在Ubuntu 18.04和Android下设置MTU的方法。 Ubuntu下的设置方式这是没有桌面环境的Ubuntu的设置方法，如果有桌面环境，那么直接进入network-manager中修改就完事了。 1vi /etc/netplan/99-netcfg.yaml 以我的文件为例 123456789network: version: 2 renderer: networkd ethernets: eth0: dhcp4: yes mtu: 1400 dhcp6: no 重启后永久生效 Android下的设置方式首先需要知道移动数据走的是哪一个网卡 1ifconfig 以我的手机为例 12345678910111213141516171819202...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2019/10/26/Nginx-FancyIndex/" title="编译安装Nginx+FancyIndex"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译安装Nginx+FancyIndex"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/10/26/Nginx-FancyIndex/" title="编译安装Nginx+FancyIndex">编译安装Nginx+FancyIndex</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2019-10-26T15:07:11.000Z" title="Created 2019-10-26 23:07:11">2019-10-26</time></span></div><div class="content">如果光是满足文件目录的需求有许多方案，如小程序webd，Python的SimpleHTTPServer，NPM的http-server，开源的的FileBrowser，闭源的FileRun…而我选择了一个不上不下的方案，也就是Nginx+FancyIndex模块。优点是可以轻松地实现防盗链和Https的支持。 编译安装Nginx必须要编译时添加FancyIndex模块才可以使用，所以先编译Nginx克隆FancyIndex模块的源码 1apt update &amp;&amp; sudo apt-get install build-essential libtool gcc automake autoconf make libpcre3 libpcre3-dev zlib1g-dev openssl git libssl-dev -y 1git clone https://github.com/aperezdc/ngx-fancyindex.git ngx-fancyindex 去 http://nginx.org/download/ 下载最新的Nginx源码，后缀为*.tar...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2019/10/10/SSH-reverse-tunnel/" title="用AutoSSH建立SSH反向隧道"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="用AutoSSH建立SSH反向隧道"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/10/10/SSH-reverse-tunnel/" title="用AutoSSH建立SSH反向隧道">用AutoSSH建立SSH反向隧道</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2019-10-10T13:05:10.000Z" title="Created 2019-10-10 21:05:10">2019-10-10</time></span></div><div class="content"> 公网服务器A 开放端口5678(转发ssh连接)，开放端口5679(监听连接状态)，开放端口22 内网机器B Ubuntu18.04 建立公网服务器A到内网机器B的SSH反向代理，将连接到公网服务器A 5678端口的SSH请求转发给内网机器B的22端口 修改公网服务器A的SSH配置文件/etc/ssh/sshd_config1GatewayPorts yes 这样可以把监听的端口绑定到任意IP 0.0.0.0上，否则只有本机127.0.0.1可以访问。记得重启SSH服务器 1sudo service restart sshd 用内网B机器保存公网服务器A的密钥，以便免密连接1ssh-copy-id [公网服务器A的用户名]@[公网服务器A的IP] 在内网B机器上尝试建立反向代理1ssh -NR 5678:127.0.0.1:22 公网服务器A的用户名@公网服务器A的IP 正常情况下，不用输入密码，通道即建立成功。 -N：只建立连接，不打开shell -R：指定端口映射 AutoSSH 自动重连使用SSH的方式不够稳定，使用AutoSSH可以自动在连接断开...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2019/10/10/Ubuntu_optimization/" title="Ubuntu优化指南"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu优化指南"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/10/10/Ubuntu_optimization/" title="Ubuntu优化指南">Ubuntu优化指南</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2019-10-10T01:00:00.000Z" title="Created 2019-10-10 09:00:00">2019-10-10</time></span></div><div class="content">记录一下Ubuntu系统安装完成后的一些自定义设置 解决与Windows双系统时时区问题先保证Ubuntu下的时间是北京时间 1sudo hwclock --localtime --systohc 问题解决 自定义Vi编辑器1sudo nano /etc/vim/vimrc 添加如下 123456789101112131415161718192021222324252627282930313233343536373839404142434445&quot;语法高亮&quot;syntax on&quot;显示行号set nu&quot;修改默认注释颜色hi Comment ctermfg=DarkCyanset nocompatible&quot;允许退格键删除set backspace=2&quot;启用鼠标&quot;set mouse=a&quot;set selection=exclusive&quot;set selectmode=mouse,key&quot;侦测文件类型filetype on&quot;载入文件类型插件filetype plugin on&quot...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2019/10/06/Android-envsetup/" title="Ubuntu下配置Lineage OS编译环境"><img class="post-bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Ubuntu下配置Lineage OS编译环境"></a></div><div class="recent-post-info"><a class="article-title" href="/2019/10/06/Android-envsetup/" title="Ubuntu下配置Lineage OS编译环境">Ubuntu下配置Lineage OS编译环境</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2019-10-05T22:25:38.000Z" title="Created 2019-10-06 06:25:38">2019-10-06</time></span></div><div class="content">系统为Ubuntu18.04物理内存至少8G起步，16G以上最好，建议SWAP+RAM&gt;=20G，太小会爆内存。硬盘空闲空间必须大于200G，因为光源码就70G左右了。 安装依赖软件包1sudo apt update &amp;&amp; sudo apt install -y git curl python-socks libncurses5-dev xclip &amp;&amp; git clone https://github.com/467815891a/AndroidEnv_setup.git &amp;&amp; cd AndroidEnv_setup &amp;&amp; sudo bash setup/android_build_env.sh &amp;&amp; cd .. 设置 git用户名和邮箱这一步其实可以省略，git clone的时候告诉远程仓库的托管服务商（如github）你的个人信息，用于认证，可以减少你被ban的几率。示例如下： 1git config --global user.email &quot;you@example.com&q...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#content-inner">4</a><a class="extend next" rel="next" href="/page/4/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-info-name">KIDand怪盗基德</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" href="https://github.com/467815891a"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/08/21/frp-nginx-proxy/" title="利用Frp+Nginx将http转化为https"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="利用Frp+Nginx将http转化为https"></a><div class="content"><a class="title" href="/2025/08/21/frp-nginx-proxy/" title="利用Frp+Nginx将http转化为https">利用Frp+Nginx将http转化为https</a><time datetime="2025-08-21T11:39:50.000Z" title="Created 2025-08-21 19:39:50">2025-08-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/08/13/xray-reality/" title="Xray配置Vless-Reality-Vision"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Xray配置Vless-Reality-Vision"></a><div class="content"><a class="title" href="/2025/08/13/xray-reality/" title="Xray配置Vless-Reality-Vision">Xray配置Vless-Reality-Vision</a><time datetime="2025-08-13T12:25:00.000Z" title="Created 2025-08-13 20:25:00">2025-08-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/13/openwrt-ipv6/" title="记录一下Openwrt的ipv6相关设置"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="记录一下Openwrt的ipv6相关设置"></a><div class="content"><a class="title" href="/2024/03/13/openwrt-ipv6/" title="记录一下Openwrt的ipv6相关设置">记录一下Openwrt的ipv6相关设置</a><time datetime="2024-03-13T10:40:56.000Z" title="Created 2024-03-13 18:40:56">2024-03-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/01/docker-clean/" title="定位Docker占用过多磁盘空间的问题"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="定位Docker占用过多磁盘空间的问题"></a><div class="content"><a class="title" href="/2024/02/01/docker-clean/" title="定位Docker占用过多磁盘空间的问题">定位Docker占用过多磁盘空间的问题</a><time datetime="2024-02-01T15:48:31.000Z" title="Created 2024-02-01 23:48:31">2024-02-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/01/dt741-bridge/" title="移动dt741-csf改桥接"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="移动dt741-csf改桥接"></a><div class="content"><a class="title" href="/2024/02/01/dt741-bridge/" title="移动dt741-csf改桥接">移动dt741-csf改桥接</a><time datetime="2024-02-01T08:22:06.000Z" title="Created 2024-02-01 16:22:06">2024-02-01</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/Android/" style="font-size:1.1em;color:#999">Android</a> <a href="/tags/Nginx/" style="font-size:1.5em;color:#99a9bf">Nginx</a> <a href="/tags/%E6%A2%AF%E5%AD%90/" style="font-size:1.3em;color:#99a1ac">梯子</a> <a href="/tags/ESP%E8%8A%AF%E7%89%87/" style="font-size:1.3em;color:#99a1ac">ESP芯片</a> <a href="/tags/openwrt/" style="font-size:1.2em;color:#999da3">openwrt</a> <a href="/tags/HomeAssistant/" style="font-size:1.4em;color:#99a5b6">HomeAssistant</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i> <span>Archives</span><a class="card-more-btn" href="/archives/" title="View More"><i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"> <a class="card-archive-list-link" href="/archives/2025/08/"><span class="card-archive-list-date">August 2025</span> <span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"> <a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">March 2024</span> <span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"> <a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">February 2024</span> <span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"> <a class="card-archive-list-link" href="/archives/2024/01/"><span class="card-archive-list-date">January 2024</span> <span class="card-archive-list-count">4</span></a></li><li class="card-archive-list-item"> <a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">July 2023</span> <span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"> <a class="card-archive-list-link" href="/archives/2022/03/"><span class="card-archive-list-date">March 2022</span> <span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"> <a class="card-archive-list-link" href="/archives/2021/12/"><span class="card-archive-list-date">December 2021</span> <span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"> <a class="card-archive-list-link" href="/archives/2021/11/"><span class="card-archive-list-date">November 2021</span> <span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">31</div></div><div class="webinfo-item"><div class="item-name">Total Word Count :</div><div class="item-count">30.2k</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastpushdate="2025-08-24T14:07:10.130Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By KIDand怪盗基德</span><span class="framework-info"><span>Framework</span> <a href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>Theme</span> <a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
+  init: str => {
+    window.typed = new Typed('#subtitle', Object.assign({
+      strings: str,
+      startDelay: 300,
+      typeSpeed: 150,
+      loop: true,
+      backSpeed: 50,
+    }, null))
+  },
+  run: subtitleType => {
+    if (true) {
+      if (typeof Typed === 'function') {
+        subtitleType()
+      } else {
+        btf.getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
+      }
+    } else {
+      subtitleType()
+    }
+  },
+  processSubtitle: (content, extraContents = []) => {
+    if (true) {
+      const sub = [].slice()
+
+      if (extraContents.length > 0) {
+        sub.unshift(...extraContents)
+      }
+
+      if (typeof content === 'string') {
+        sub.unshift(content)
+      } else if (Array.isArray(content)) {
+        sub.unshift(...content)
+      }
+
+      sub.length > 0 && typedJSFn.init(sub)
+    } else {
+      document.getElementById('subtitle').textContent = typeof content === 'string' ? content :
+        (Array.isArray(content) && content.length > 0 ? content[0] : '')
+    }
+  }
+}
+btf.addGlobalFn('pjaxSendOnce', () => { typed.destroy() }, 'typedDestroy')
+</script><script>function subtitleType () {
+  fetch('https://v.api.aa1.cn/api/yiyan/index.php')
+    .then(response => response.text())
+    .then(data => {
+      const reg = /<p>(.*?)<\/p>/g
+      const result = reg.exec(data)
+      if (result && result[1]) {
+        typedJSFn.processSubtitle(result[1])
+      } else {
+        throw new Error('Failed to parse the return value of the Yiyan API')
+      }
+    })
+    .catch(err => {
+      console.error('Failed to get the Yiyan API:', err)
+      typedJSFn.processSubtitle(0)
+    })
+}
+typedJSFn.run(subtitleType)
+</script></div><script src="https://cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zindex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      const usePjax = true
+      false
+        ? (usePjax ? pjax.loadUrl('/404.html') : window.location.href = '/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">Search</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i> <span>Loading Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="键入你想搜索的关键词" type="text"></div></div><hr><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
